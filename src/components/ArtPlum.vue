@@ -1,22 +1,21 @@
 <script setup lang="ts">
+import {Fn, useRafFn, useWindowSize} from '@vueuse/core'
 import {onMounted, reactive, ref} from "vue";
-import {useWindowSize} from "@vueuse/core";
 
-interface Point {
-  x: number
-  y: number
-}
+const r180 = Math.PI
+const r90 = Math.PI / 2
+const r15 = Math.PI / 12
+const color = '#88888825'
 
-interface Branch {
-  start: Point
-  length: number
-  theta: number
-}
-
-// canvas实例
 const el = ref<HTMLCanvasElement | null>(null)
-// 屏幕大小
+
+const { random } = Math
 const size = reactive(useWindowSize())
+
+const start = ref<Fn>(() => {})
+const MIN_BRANCH = 30
+const len = ref(6)
+const stopped = ref(false)
 
 function initCanvas(canvas: HTMLCanvasElement, width = 400, height = 400, _dpi?: number) {
   const ctx = canvas.getContext('2d')!
@@ -32,100 +31,109 @@ function initCanvas(canvas: HTMLCanvasElement, width = 400, height = 400, _dpi?:
   canvas.width = dpi * width
   canvas.height = dpi * height
   ctx.scale(dpi, dpi)
+
   return { ctx }
 }
 
-onMounted(()=>{
+function polar2cart(x = 0, y = 0, r = 0, theta = 0) {
+  const dx = r * Math.cos(theta)
+  const dy = r * Math.sin(theta)
+  return [x + dx, y + dy]
+}
+
+onMounted(async () => {
   const canvas = el.value!
-  const {ctx} = initCanvas(canvas, size.width, size.height)
+  const { ctx } = initCanvas(canvas, size.width, size.height)
+  const { width, height } = canvas
 
-  function lineTo(p1: Point, p2: Point) {
+  let steps: Fn[] = []
+  let prevSteps: Fn[] = []
+
+  const step = (x: number, y: number, rad: number, counter: { value: number } = { value: 0 }) => {
+    const length = random() * len.value
+    counter.value += 1
+
+    const [nx, ny] = polar2cart(x, y, length, rad)
+
     ctx.beginPath()
-    ctx.moveTo(p1.x, p1.y)
-    ctx.lineTo(p2.x, p2.y)
+    ctx.moveTo(x, y)
+    ctx.lineTo(nx, ny)
     ctx.stroke()
+
+    const rad1 = rad + random() * r15
+    const rad2 = rad - random() * r15
+
+    // out of bounds
+    if (nx < -100 || nx > size.width + 100 || ny < -100 || ny > size.height + 100)
+      return
+
+    const rate = counter.value <= MIN_BRANCH
+        ? 0.8
+        : 0.5
+
+    // left branch
+    if (random() < rate)
+      steps.push(() => step(nx, ny, rad1, counter))
+
+    // right branch
+    if (random() < rate)
+      steps.push(() => step(nx, ny, rad2, counter))
   }
 
-  function init() {
-    ctx.strokeStyle = '#88888825'
-    pendingTasks.length = 0
-    ctx.clearRect(0,0,size.width,size.height)
-    step({
-      start: {x: size.width / (Math.random() * 10), y: size.height },
-      length: 5,
-      theta: -Math.PI / 2
-    })
-    step({
-      start: {x: 0, y: size.height/(Math.random() * 10)},
-      length: 5,
-      theta: 0
-    })
-    step({
-      start: {x: size.width, y: size.height/(Math.random() * 10)},
-      length: 5,
-      theta: Math.PI
-    })
-  }
+  let lastTime = performance.now()
+  const interval = 1000 / 40 // 50fps
 
-  function getEndPoint({start, length, theta}: Branch) {
-    return {
-      x: start.x + length * Math.cos(theta),
-      y: start.y + length * Math.sin(theta)
-    }
-  }
+  let controls: ReturnType<typeof useRafFn>
 
-  function drawBranch(b: Branch) {
-    lineTo(b.start, getEndPoint(b))
-  }
+  const frame = () => {
+    if (performance.now() - lastTime < interval)
+      return
 
-  const pendingTasks: Function[] = []
+    prevSteps = steps
+    steps = []
+    lastTime = performance.now()
 
-  function step(b: Branch,depth = 0) {
-
-    const end = getEndPoint(b)
-
-    drawBranch(b)
-
-    const rate = depth>6?(depth>100?0.3:0.45):0.7
-
-    if (depth<4||Math.random() < rate) {
-      pendingTasks.push(() =>
-          step({
-            start: end,
-            length: b.length * Math.random() + 2,
-            theta: b.theta - Math.PI / 12
-          },depth + 1))
+    if (!prevSteps.length) {
+      controls.pause()
+      stopped.value = true
     }
 
-    if (depth<4||Math.random() < rate) {
-      pendingTasks.push(() =>
-          step({
-            start: end,
-            length: b.length + Math.random() * 5 -2.5,
-            theta: b.theta + Math.PI / 12
-          },depth + 1))
-    }
-  }
-
-  function frame() {
-    const tasks = [...pendingTasks]
-    pendingTasks.length = 0
-    tasks.forEach(fn => fn())
-  }
-
-  let frameCount = 0
-  function startFrame() {
-    requestAnimationFrame(() => {
-      frameCount += 1
-      if(frameCount % 5 === 0){
-        frame()
-      }
-      startFrame()
+    // Execute all the steps from the previous frame
+    prevSteps.forEach((i) => {
+      // 50% chance to keep the step for the next frame, to create a more organic look
+      if (random() < 0.5)
+        steps.push(i)
+      else
+        i()
     })
   }
-  startFrame()
 
-  init()
+  controls = useRafFn(frame, { immediate: false })
+
+  /**
+   * 0.2 - 0.8
+   */
+  const randomMiddle = () => random() * 0.6 + 0.2
+
+  start.value = () => {
+    controls.pause()
+    ctx.clearRect(0, 0, width, height)
+    ctx.lineWidth = 1
+    ctx.strokeStyle = color
+    prevSteps = []
+    steps = [
+      () => step(randomMiddle() * size.width, -5, r90),
+      () => step(randomMiddle() * size.width, size.height + 5, -r90),
+      () => step(-5, randomMiddle() * size.height, 0),
+      () => step(size.width + 5, randomMiddle() * size.height, r180),
+    ]
+    if (size.width < 500)
+      steps = steps.slice(0, 2)
+    controls.resume()
+    stopped.value = false
+  }
+
+  start.value()
 })
 </script>
 
