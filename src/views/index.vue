@@ -1,13 +1,11 @@
 <script setup lang="ts">
-/**
- * @Author Rika
- * @Description
- * @CreateData 2024/08/06
- */
+import ArtPlum from "@/components/ArtPlum.vue";
+
+
 </script>
 
 <template>
-111
+  <ArtPlum/>
 </template>
 
 <style scoped>

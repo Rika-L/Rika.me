@@ -11,10 +11,12 @@
   "dependencies": {
     "@vueuse/core": "^10.11.0",
     "@vueuse/motion": "^2.2.3",
+    "path": "^0.12.7",
     "vue": "^3.4.31",
     "vue-router": "^4.4.2"
   },
   "devDependencies": {
+    "@types/node": "^22.1.0",
     "@vitejs/plugin-vue": "^5.0.5",
     "autoprefixer": "^10.4.20",
     "postcss": "^8.4.41",
