@@ -5,7 +5,10 @@
  */
 
 const zh = {
-    username:'张三'
+    bar:{
+        blog:'博客',
+        about:'关于'
+    }
 }
 
 export default zh

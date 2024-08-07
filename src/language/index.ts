@@ -14,7 +14,7 @@ const i18n = createI18n({
         'en':en,
         'zh':zh
     },
-    locale: 'zh'
+    locale: 'en'
 })
 
 export default i18n

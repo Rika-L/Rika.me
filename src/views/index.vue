@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import ArtPlum from "@/components/ArtPlum.vue";
 
-
 </script>
 
 <template>
@@ -9,7 +8,7 @@ import ArtPlum from "@/components/ArtPlum.vue";
   <div class="flex w-100vw mt-16" v-motion-fade>
     <div class="flex-[0_0_30%]"></div>
     <div class="flex-[0_0_40%]">
-      {{$t('username')}}
+
     </div>
     <div class="flex-[0_0_30%]"></div>
   </div>

@@ -5,6 +5,9 @@
  */
 
 const en =  {
-    username:'zhangsan'
+    bar:{
+        blog:'Blog',
+        about:'About'
+    }
 }
 export default en
