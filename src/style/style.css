@@ -5,6 +5,7 @@
 @tailwind utilities;
 
 :root {
+    color: rgb(55,65,81);
     --c-bg: #fff;
     --c-scrollbar: #eee;
     --c-scrollbar-hover: #bbb;

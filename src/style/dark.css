@@ -2,5 +2,5 @@ html.dark {
     --c-bg: #050505;
     --c-scrollbar: #111;
     --c-scrollbar-hover: #222;
-    color: #fff;
+    color: rgb(209 213 219);
 }

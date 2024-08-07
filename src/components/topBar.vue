@@ -68,28 +68,31 @@ function toggleDark(event: MouseEvent) {
   <div class="fixed top-0 w-full h-16">
     <div class="flex w-full h-full">
       <div class="flex-[0_0_50%]"></div>
-      <div class="flex-[0_0_50%] flex justify-center items-center gap-5">
+      <div class="flex-[0_0_50%] flex justify-center items-center gap-5 topBar">
         <a class="cursor-pointer">{{ $t('bar.blog') }}</a>
         <a class="cursor-pointer">{{ $t('bar.about') }}</a>
-        <div class="flex justify-center items-center gap-1">
-          <button @click="changeLang"
-                  class="cursor-pointer w-10 h-10 flex justify-center items-center rounded-full hover:bg-gray-300 hover:dark:bg-gray-700">
-            <svg width="24" :fill="!isDark?'#050505':'#fff'">
-              <use xlink:href="#icon-language"></use>
-            </svg>
-          </button>
-          <button @click="toggleDark"
-                  class="cursor-pointer w-10 h-10 flex justify-center items-center rounded-full hover:bg-gray-300 hover:dark:bg-gray-700">
-            <svg width="24" :fill="!isDark?'#050505':'#fff'">
-              <use xlink:href="#icon-darkmode"></use>
-            </svg>
-          </button>
-        </div>
+        <a @click="changeLang" class="iconify mdi--language text-xl"></a>
+        <a @click="toggleDark" class="iconify text-xl" :class="isDark?' mdi--white-balance-sunny':'mdi--moon-and-stars'"></a>
+        <a class="iconify mdi--github text-xl"></a>
       </div>
     </div>
   </div>
 </template>
 
 <style scoped>
+.topBar > a {
+  color: #0004;
+}
 
+.dark .topBar > a {
+  color: #fff4;
+}
+
+.topBar > a:hover {
+  color: #0009;
+}
+
+.dark .topBar > a:hover {
+  color: #fff9;
+}
 </style>
