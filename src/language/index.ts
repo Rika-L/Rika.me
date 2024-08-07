@@ -9,9 +9,10 @@ import zh from "@/language/zh.ts";
 import {createI18n} from "vue-i18n";
 
 const i18n = createI18n({
+    legacy:false,
     messages: {
-        en,
-        zh
+        'en':en,
+        'zh':zh
     },
     locale: 'zh'
 })
