@@ -7,7 +7,8 @@
 const zh = {
     bar:{
         blog:'博客',
-        about:'关于'
+        about:'关于',
+        code:'代码'
     },
     index:{
         Subheading:'一位前端开发者',

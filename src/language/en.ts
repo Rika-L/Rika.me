@@ -7,7 +7,8 @@
 const en =  {
     bar:{
         blog:'Blog',
-        about:'About'
+        about:'About',
+        code:'Code'
     },
     index:{
         Subheading:'A front-end developer',

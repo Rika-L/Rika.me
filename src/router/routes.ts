@@ -1,10 +1,25 @@
 import {RouteRecordRaw} from 'vue-router'
 
-
-export const constantRoute:RouteRecordRaw[] = [
-  {
-    path: '',
-    component:()=>import('@/views/index.vue'),
-    name:'index'
-  },
+export const constantRoute: RouteRecordRaw[] = [
+    {
+        path: '',
+        component: () => import('@/views/index.vue'),
+        name: 'index'
+    },
+    {
+        path: '/blog',
+        component: () => import('@/views/blog/index.vue'),
+        name: 'blog',
+        children: [
+            {
+                path: '',
+                component: () => import('@/views/blog/main.vue'),
+                name:'blogIndex'
+            },
+            {
+                path: '/blog/1',
+                component:() => import('@/pages/1.md')
+            }
+        ]
+    },
 ]

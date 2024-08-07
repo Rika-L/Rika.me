@@ -5,7 +5,6 @@ import LogoCard from "@/components/LogoCard.vue";
 </script>
 
 <template>
-  <ArtPlum/>
   <div class="flex w-100vw mt-16 leading-loose" v-motion-fade >
     <div class="flex-[0_0_25%]"></div>
     <div class="flex-[0_0_50%]">

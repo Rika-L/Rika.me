@@ -2,7 +2,9 @@
 import {useI18n} from "vue-i18n";
 import {useDark} from '@vueuse/core'
 import {nextTick} from "vue";
+import {useRouter} from "vue-router";
 
+const $router = useRouter()
 const isDark = useDark({
   selector: 'html',
   valueDark: 'dark',
@@ -69,7 +71,8 @@ function toggleDark(event: MouseEvent) {
     <div class="flex w-full h-full">
       <div class="flex-[0_0_50%]"></div>
       <div class="flex-[0_0_50%] flex justify-center items-center gap-5 topBar">
-        <a class="cursor-pointer">{{ $t('bar.blog') }}</a>
+        <a @click="$router.push('/blog')" class="cursor-pointer">{{ $t('bar.blog') }}</a>
+        <a class="cursor-pointer">{{ $t('bar.code') }}</a>
         <a class="cursor-pointer">{{ $t('bar.about') }}</a>
         <a @click="changeLang" class="iconify mdi--language text-xl"></a>
         <a @click="toggleDark" class="iconify text-xl" :class="isDark?' mdi--white-balance-sunny':'mdi--moon-and-stars'"></a>
