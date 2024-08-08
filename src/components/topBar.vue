@@ -67,9 +67,9 @@ const TopBarRef  = ref<HTMLDivElement>()
 
 function handleScroll() {
   if (window.scrollY !== 0){
-    TopBarRef.value!.className = "transition fixed top-0 w-full h-16 bg-[#ffffff88] backdrop-blur-sm dark:bg-[#00000088]"
+    TopBarRef.value!.className = "z-10 transition fixed top-0 w-full h-16 bg-[#ffffff88] backdrop-blur-sm dark:bg-[#00000088]"
   }else {
-    TopBarRef.value!.className = "transition fixed top-0 w-full h-16"
+    TopBarRef.value!.className = "transition fixed top-0 w-full h-16 z-10"
   }
 }
 
@@ -86,7 +86,7 @@ export default {
 </script>
 
 <template>
-  <div ref="TopBarRef" class="fixed top-0 w-full h-16">
+  <div ref="TopBarRef" class="fixed top-0 w-full h-16 z-10">
     <div class="flex w-full h-full">
       <div class="flex-[0_0_50%]"></div>
       <div class="flex-[0_0_50%] flex justify-center items-center gap-5 topBar">
