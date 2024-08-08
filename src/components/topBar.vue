@@ -3,6 +3,8 @@ import {useI18n} from "vue-i18n";
 import {useDark} from '@vueuse/core'
 import {nextTick, onMounted, ref} from "vue";
 import {useRouter} from "vue-router";
+import {ElCol, ElRow} from "element-plus";
+
 const $router = useRouter()
 const isDark = useDark({
   selector: 'html',
@@ -63,42 +65,45 @@ function toggleDark(event: MouseEvent) {
       })
 }
 
-const TopBarRef  = ref<HTMLDivElement>()
+const TopBarRef = ref<HTMLDivElement>()
 
 function handleScroll() {
-  if (window.scrollY !== 0){
+  if (window.scrollY !== 0) {
     TopBarRef.value!.className = "z-10 transition fixed top-0 w-full h-16 bg-[#ffffff88] backdrop-blur-sm dark:bg-[#00000088]"
-  }else {
+  } else {
     TopBarRef.value!.className = "transition fixed top-0 w-full h-16 z-10"
   }
 }
 
-onMounted(()=>{
-  window.addEventListener('scroll',handleScroll)
+onMounted(() => {
+  window.addEventListener('scroll', handleScroll)
 })
 
 </script>
 
 <script lang="ts">
 export default {
-  name:'bar'
+  name: 'bar'
 }
 </script>
 
 <template>
   <div ref="TopBarRef" class="fixed top-0 w-full h-16 z-10">
-    <div class="flex w-full h-full">
-      <div class="flex-[0_0_50%]"></div>
-      <div class="flex-[0_0_50%] flex justify-center items-center gap-5 topBar">
-        <a @click="$router.push('/')" class="cursor-pointer">{{ $t('bar.home') }}</a>
-        <a @click="$router.push('/blog')" class="cursor-pointer">{{ $t('bar.blog') }}</a>
-        <a class="cursor-pointer">{{ $t('bar.code') }}</a>
-        <a class="cursor-pointer">{{ $t('bar.about') }}</a>
-        <a @click="changeLang" class="iconify mdi--language text-xl"></a>
-        <a @click="toggleDark" class="iconify text-xl" :class="isDark?' mdi--white-balance-sunny':'mdi--moon-and-stars'"></a>
-        <a class="iconify mdi--github text-xl"></a>
-      </div>
-    </div>
+    <ElRow class="leading-loose mt-18 w-full h-full">
+      <ElCol :xs="0" :sm="0" :md="12" :lg="12" :xl="12"></ElCol>
+      <ElCol :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
+        <div class="flex justify-center items-center gap-5 topBar h-full">
+          <a @click="$router.push('/')" class="cursor-pointer">{{ $t('bar.home') }}</a>
+          <a @click="$router.push('/blog')" class="cursor-pointer">{{ $t('bar.blog') }}</a>
+          <a class="cursor-pointer">{{ $t('bar.code') }}</a>
+          <a class="cursor-pointer">{{ $t('bar.about') }}</a>
+          <a @click="changeLang" class="iconify mdi--language text-xl"></a>
+          <a @click="toggleDark" class="iconify text-xl"
+             :class="isDark?' mdi--white-balance-sunny':'mdi--moon-and-stars'"></a>
+          <a class="iconify mdi--github text-xl"></a>
+        </div>
+      </ElCol>
+    </ElRow>
   </div>
 </template>
 
