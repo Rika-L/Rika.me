@@ -11,9 +11,7 @@ import { ElRow,ElCol } from 'element-plus'
   <ElRow class="leading-loose mt-18">
     <ElCol :xs="1" :sm="1" :md="6" :lg="6" :xl="6"></ElCol>
     <ElCol :xs="22" :sm="22" :md="12" :lg="12" :xl="12">
-      <div v-highlight>
-        <router-view/>
-      </div>
+        <router-view v-highlight/>
     </ElCol>
     <ElCol :xs="1" :sm="1" :md="6" :lg="6" :xl="6"></ElCol>
   </ElRow>
