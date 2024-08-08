@@ -8,7 +8,9 @@ import {blogType} from "@/pages/blog";
 
 defineProps({
   message:{
-    type:Object as PropType<blogType>
+    type:Object as PropType<blogType>,
+    require:true,
+    default:{}
   }
 })
 </script>
