@@ -13,7 +13,7 @@ const $router = useRouter()
 <template>
   <div class="text-5xl font-bold">{{$t('bar.blog')}}</div>
   <div class="mt-8">
-    <BlogBlock @click="$router.push(`/blog/${item.id}`)" v-for="item in blog" v-motion-fade :delay="100*item" :message="item" :key="item.id"></BlogBlock>
+    <BlogBlock @click="$router.push(`/blog/${item.id}`)" v-for="(item,index) in blog" v-motion-fade :delay="100*index" :message="item" :key="item.id"></BlogBlock>
   </div>
 </template>
 

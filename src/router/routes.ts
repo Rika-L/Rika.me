@@ -18,7 +18,7 @@ export const constantRoute: RouteRecordRaw[] = [
             },
             {
                 path: '/blog/1',
-                component:() => import('@/pages/1.md')
+                component:() => import('@/pages/blog/VueCustomDirectives.md')
             }
         ]
     },

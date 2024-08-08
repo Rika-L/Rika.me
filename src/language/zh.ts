@@ -8,7 +8,8 @@ const zh = {
     bar:{
         blog:'博客',
         about:'关于',
-        code:'代码'
+        code:'代码',
+        home:'首页'
     },
     index:{
         Subheading:'一位前端开发者',

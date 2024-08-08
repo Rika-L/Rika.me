@@ -11,13 +11,12 @@ export interface blogType {
     id: number
 }
 
-const blog: blogType = [
+const blog: blogType[] = [
     {
-        title: '好想睡觉啊',
-        summary: '这是好想睡睡觉的摘要',
-        time: '2024/8/7',
+        title: 'VueCustomDirectives',
+        summary: 'Vue的自定义指令相关笔记',
+        time: '2024/6/8',
         id: 1,
-    }
-]
+    }]
 
 export default blog

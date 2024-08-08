@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import {useI18n} from "vue-i18n";
 import {useDark} from '@vueuse/core'
-import {nextTick} from "vue";
+import {nextTick, onMounted, ref} from "vue";
 import {useRouter} from "vue-router";
-
 const $router = useRouter()
 const isDark = useDark({
   selector: 'html',
@@ -64,13 +63,34 @@ function toggleDark(event: MouseEvent) {
       })
 }
 
+const TopBarRef  = ref<HTMLDivElement>()
+
+function handleScroll() {
+  if (window.scrollY !== 0){
+    TopBarRef.value!.className = "transition fixed top-0 w-full h-16 bg-[#ffffff88] backdrop-blur-sm dark:bg-[#00000088]"
+  }else {
+    TopBarRef.value!.className = "transition fixed top-0 w-full h-16"
+  }
+}
+
+onMounted(()=>{
+  window.addEventListener('scroll',handleScroll)
+})
+
+</script>
+
+<script lang="ts">
+export default {
+  name:'bar'
+}
 </script>
 
 <template>
-  <div class="fixed top-0 w-full h-16">
+  <div ref="TopBarRef" class="fixed top-0 w-full h-16">
     <div class="flex w-full h-full">
       <div class="flex-[0_0_50%]"></div>
       <div class="flex-[0_0_50%] flex justify-center items-center gap-5 topBar">
+        <a @click="$router.push('/')" class="cursor-pointer">{{ $t('bar.home') }}</a>
         <a @click="$router.push('/blog')" class="cursor-pointer">{{ $t('bar.blog') }}</a>
         <a class="cursor-pointer">{{ $t('bar.code') }}</a>
         <a class="cursor-pointer">{{ $t('bar.about') }}</a>
