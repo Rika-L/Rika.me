@@ -15,7 +15,9 @@ const en =  {
         Subheading:'A front-end developer',
         goodAt:'Be good at',
         little:'And have a basic understanding of',
-        motive:'My passion for learning stems from the practical realization and application of acquired knowledge in real-life situations. All of my projects can be found in the following link. '
+        motive:'My passion for learning stems from the practical realization and application of acquired knowledge in real-life situations. All of my projects can be found in the following link. ',
+        myProject:'is a personal utility function library based on TypeScript.',
+        life:'In life, I enjoy savoring music and coffee. Eason Chan and a cup of iced coffee are the perfect match after coding.'
     }
 }
 export default en
