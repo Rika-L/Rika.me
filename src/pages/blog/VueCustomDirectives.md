@@ -165,10 +165,10 @@ const vCopy: Directive = {
 ```
 ├───directives
 │   │   index.ts
-│   │   
+│   │
 │   ├───copy
 │   │       index.ts
-│   │       
+│   │
 │   └───foucs
 │           index.ts
 ```

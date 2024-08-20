@@ -5,18 +5,19 @@
  */
 
 export interface blogType {
-    title: string
-    summary: string
-    time: string
-    id: number
+  title: string
+  summary: string
+  time: string
+  id: number
 }
 
 const blog: blogType[] = [
-    {
-        title: 'VueCustomDirectives',
-        summary: 'Vue的自定义指令相关笔记',
-        time: '2024/6/8',
-        id: 1,
-    }]
+  {
+    title: 'VueCustomDirectives',
+    summary: 'Vue的自定义指令相关笔记',
+    time: '2024/6/8',
+    id: 1,
+  },
+]
 
 export default blog

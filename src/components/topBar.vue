@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import {useI18n} from "vue-i18n";
-import {useDark} from '@vueuse/core'
-import {nextTick, onMounted, ref} from "vue";
-import {useRouter} from "vue-router";
-import {ElCol, ElRow} from "element-plus";
+import { useI18n } from 'vue-i18n'
+import { useDark } from '@vueuse/core'
+import { nextTick, onMounted, ref } from 'vue'
+import { useRouter } from 'vue-router'
+import { ElCol, ElRow } from 'element-plus'
 
 const $router = useRouter()
 const isDark = useDark({
@@ -11,12 +11,13 @@ const isDark = useDark({
   valueDark: 'dark',
 })
 
-const {locale} = useI18n()
+const { locale } = useI18n()
 
-const changeLang = () => {
+function changeLang() {
   if (locale.value === 'en') {
     locale.value = 'zh'
-  } else {
+  }
+  else {
     locale.value = 'en'
   }
 }
@@ -24,7 +25,7 @@ const changeLang = () => {
 function toggleDark(event: MouseEvent) {
   // @ts-expect-error experimental API
   const isAppearanceTransition = document.startViewTransition
-      && !window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    && !window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
   if (!isAppearanceTransition) {
     isDark.value = !isDark.value
@@ -34,8 +35,8 @@ function toggleDark(event: MouseEvent) {
   const x = event.clientX
   const y = event.clientY
   const endRadius = Math.hypot(
-      Math.max(x, innerWidth - x),
-      Math.max(y, innerHeight - y),
+    Math.max(x, innerWidth - x),
+    Math.max(y, innerHeight - y),
   )
   // @ts-expect-error: Transition API
   const transition = document.startViewTransition(async () => {
@@ -43,64 +44,66 @@ function toggleDark(event: MouseEvent) {
     await nextTick()
   })
   transition.ready
-      .then(() => {
-        const clipPath = [
-          `circle(0px at ${x}px ${y}px)`,
-          `circle(${endRadius}px at ${x}px ${y}px)`,
-        ]
-        document.documentElement.animate(
-            {
-              clipPath: isDark.value
-                  ? [...clipPath].reverse()
-                  : clipPath,
-            },
-            {
-              duration: 400,
-              easing: 'ease-out',
-              pseudoElement: isDark.value
-                  ? '::view-transition-old(root)'
-                  : '::view-transition-new(root)',
-            },
-        )
-      })
+    .then(() => {
+      const clipPath = [
+        `circle(0px at ${x}px ${y}px)`,
+        `circle(${endRadius}px at ${x}px ${y}px)`,
+      ]
+      document.documentElement.animate(
+        {
+          clipPath: isDark.value
+            ? [...clipPath].reverse()
+            : clipPath,
+        },
+        {
+          duration: 400,
+          easing: 'ease-out',
+          pseudoElement: isDark.value
+            ? '::view-transition-old(root)'
+            : '::view-transition-new(root)',
+        },
+      )
+    })
 }
 
 const TopBarRef = ref<HTMLDivElement>()
 
 function handleScroll() {
   if (window.scrollY !== 0) {
-    TopBarRef.value!.className = "z-10 transition fixed top-0 w-full h-16 bg-[#ffffff88] backdrop-blur-sm dark:bg-[#00000088]"
-  } else {
-    TopBarRef.value!.className = "transition fixed top-0 w-full h-16 z-10"
+    TopBarRef.value!.className = 'z-10 transition fixed top-0 w-full h-16 bg-[#ffffff88] backdrop-blur-sm dark:bg-[#00000088]'
+  }
+  else {
+    TopBarRef.value!.className = 'transition fixed top-0 w-full h-16 z-10'
   }
 }
 
 onMounted(() => {
   window.addEventListener('scroll', handleScroll)
 })
-
 </script>
 
 <script lang="ts">
 export default {
-  name: 'bar'
+  name: 'Bar',
 }
 </script>
 
 <template>
   <div ref="TopBarRef" class="fixed top-0 w-full h-16 z-10">
     <ElRow class="leading-loose mt-18 w-full h-full">
-      <ElCol :xs="0" :sm="0" :md="12" :lg="12" :xl="12"></ElCol>
+      <ElCol :xs="0" :sm="0" :md="12" :lg="12" :xl="12" />
       <ElCol :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
         <div class="flex justify-center items-center gap-5 topBar h-full">
-          <a @click="$router.push('/')" class="cursor-pointer">{{ $t('bar.home') }}</a>
-          <a @click="$router.push('/blog')" class="cursor-pointer">{{ $t('bar.blog') }}</a>
+          <a class="cursor-pointer" @click="$router.push('/')">{{ $t('bar.home') }}</a>
+          <a class="cursor-pointer" @click="$router.push('/blog')">{{ $t('bar.blog') }}</a>
           <a class="cursor-pointer">{{ $t('bar.code') }}</a>
           <a class="cursor-pointer">{{ $t('bar.about') }}</a>
-          <a @click="changeLang" class="iconify mdi--language text-xl"></a>
-          <a @click="toggleDark" class="iconify text-xl"
-             :class="isDark?' mdi--white-balance-sunny':'mdi--moon-and-stars'"></a>
-          <a class="iconify mdi--github text-xl"></a>
+          <a class="iconify mdi--language text-xl" @click="changeLang" />
+          <a
+            class="iconify text-xl" :class="isDark ? ' mdi--white-balance-sunny' : 'mdi--moon-and-stars'"
+            @click="toggleDark"
+          />
+          <a class="iconify mdi--github text-xl" />
         </div>
       </ElCol>
     </ElRow>

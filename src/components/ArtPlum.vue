@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import {Fn, useRafFn, useWindowSize} from '@vueuse/core'
-import {onMounted, reactive, ref} from "vue";
+import type { Fn } from '@vueuse/core'
+import { useRafFn, useWindowSize } from '@vueuse/core'
+import { onMounted, reactive, ref } from 'vue'
 
 const r180 = Math.PI
 const r90 = Math.PI / 2
@@ -68,8 +69,8 @@ onMounted(async () => {
       return
 
     const rate = counter.value <= MIN_BRANCH
-        ? 0.8
-        : 0.5
+      ? 0.8
+      : 0.5
 
     // left branch
     if (random() < rate)
@@ -138,9 +139,9 @@ onMounted(async () => {
 </script>
 
 <template>
-<div class="fixed top-0 bottom-0 left-0 right-0 -z-[1] pointer-events-none print:hidden">
-  <canvas width="400" height="400" ref="el"></canvas>
-</div>
+  <div class="fixed top-0 bottom-0 left-0 right-0 -z-[1] pointer-events-none print:hidden">
+    <canvas ref="el" width="400" height="400" />
+  </div>
 </template>
 
 <style scoped>

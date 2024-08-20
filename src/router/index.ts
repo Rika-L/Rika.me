@@ -1,13 +1,12 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import { constantRoute } from '@/router/routes.ts'
 
-
-let router = createRouter({
-  //路由模式
+const router = createRouter({
+  // 路由模式
   history: createWebHashHistory(),
   routes: constantRoute,
-  //滚动行为
-  /*具体来说，
+  // 滚动行为
+  /* 具体来说，
     scrollBehavior 函数会在路由切换时被调用，
     它决定了页面滚动的位置。
     在这个例子中，

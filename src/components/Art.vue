@@ -1,12 +1,13 @@
-<script setup lang="ts">/**
+<script setup lang="ts">
+/**
  * @Author Rika
  * @Description
  * @CreateData 2024/08/20
  */
-import {computed, defineAsyncComponent} from "vue";
+import { computed, defineAsyncComponent } from 'vue'
 
 const ArtComponent = computed(() => {
-  let art = Math.random() > 0.5 ? 'plum' : 'ball'
+  const art = Math.random() > 0.5 ? 'plum' : 'ball'
   if (typeof window !== 'undefined') {
     if (art === 'plum')
       return defineAsyncComponent(() => import('./ArtPlum.vue'))
@@ -18,7 +19,7 @@ const ArtComponent = computed(() => {
 </script>
 
 <template>
-  <component :is="ArtComponent"/>
+  <component :is="ArtComponent" />
 </template>
 
 <style scoped>

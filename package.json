@@ -1,12 +1,14 @@
 {
   "name": "rika.me",
-  "private": true,
-  "version": "0.0.0",
   "type": "module",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
     "dev": "bun run vite",
     "build": "vue-tsc -b && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "dependencies": {
     "@vueuse/core": "^10.11.0",
@@ -20,11 +22,13 @@
     "vue-router": "^4.4.2"
   },
   "devDependencies": {
+    "@antfu/eslint-config": "^2.26.0",
     "@iconify/json": "^2.2.234",
     "@iconify/tailwind": "^1.1.2",
     "@types/node": "^22.1.0",
     "@vitejs/plugin-vue": "^5.0.5",
     "autoprefixer": "^10.4.20",
+    "eslint": "^9.9.0",
     "postcss": "^8.4.41",
     "tailwindcss": "^3.4.7",
     "typescript": "^5.2.2",
