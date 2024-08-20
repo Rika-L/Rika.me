@@ -47,15 +47,15 @@ function random(min: number, max: number): number {
 }
 
 // 小球的工厂函数
-function createBall(width: number, height: number): BallProps {
+function createBall(): BallProps {
   return {
-    x: random(0, width),
-    y: random(0, height),
+    x: random(0, windowSize.width),
+    y: random(0, windowSize.height),
     vx: random(-2, 2) * (1 / 2.0),
     vy: random(-2, 2) * (1 / 2.0),
     size: 3,
-    color: "rgb(136,136,136,0.20)",
-    lineColor: `rgba(136, 136, 136, 0.20)`
+    color: `rgb(136,136,136,${Math.random() * 0.5})`,
+    lineColor: `rgba(136, 136, 136, ${Math.random() * 0.4})`
   };
 }
 
@@ -108,7 +108,7 @@ onMounted(async () => {
 
 
 // 创建小球列表
-  const balls = Array.from({length: 100}, () => createBall(width, height));
+  const balls = Array.from({length: 70}, createBall);
 
 // 主循环函数
   function loop(): void {
