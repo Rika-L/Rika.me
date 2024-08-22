@@ -95,7 +95,6 @@ export default {
       <ElCol :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
         <div class="flex justify-center items-center gap-5 topBar h-full">
           <a class="cursor-pointer" @click="$router.push('/')">{{ $t('bar.home') }}</a>
-          <a class="cursor-pointer" @click="$router.push('/blog')">{{ $t('bar.blog') }}</a>
           <a class="cursor-pointer">{{ $t('bar.code') }}</a>
           <a class="cursor-pointer">{{ $t('bar.about') }}</a>
           <a class="iconify mdi--language text-xl" @click="changeLang" />

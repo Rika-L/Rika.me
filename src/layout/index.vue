@@ -9,6 +9,3 @@ import TopBar from '@/components/topBar.vue'
   </div>
 </template>
 
-<style scoped>
-
-</style>

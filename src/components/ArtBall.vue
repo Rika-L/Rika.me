@@ -52,8 +52,8 @@ function createBall(): BallProps {
   return {
     x: random(0, windowSize.width),
     y: random(0, windowSize.height),
-    vx: random(-2, 2) * (1 / 2.0),
-    vy: random(-2, 2) * (1 / 2.0),
+    vx: random(-2, 2) * (1 / 4.0),
+    vy: random(-2, 2) * (1 / 4.0),
     size: 3,
     color: `rgb(136,136,136,${Math.random() * 0.5})`,
     lineColor: `rgba(136, 136, 136, ${Math.random() * 0.4})`,
