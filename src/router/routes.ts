@@ -18,6 +18,10 @@ export const constantRoute: RouteRecordRaw[] = [
       {
         path:'/code/1',
         component:() => import('@/views/code/1.patterned-glass.vue'),
+      },
+      {
+        path:'/code/2',
+        component:() => import('@/views/code/2.round.vue'),
       }
     ]
   },
