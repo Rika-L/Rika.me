@@ -11,6 +11,6 @@ export default {
     extend: {},
   },
   plugins: [
-    addIconSelectors(['mdi', 'mdi-light', 'logos']),
+    addIconSelectors(['mdi', 'mdi-light', 'logos','simple-icons']),
   ],
 }

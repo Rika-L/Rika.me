@@ -38,6 +38,18 @@ import LogoCard from '@/components/LogoCard.vue'
             <span>{{ $t('index.myProject') }}</span>
           </div>
           <div class="mt-4" v-motion-fade :delay="800" :duration="1000">
+            <span>{{ $t('index.cli') }}</span>
+            <LogoCard title="rika-cli" url="https://rika-utils.netlify.app/"/>
+            <span>{{ $t('index.temp') }}</span>
+            <span class="mx-2">
+              <a href="https://github.com/orgs/rika-template/repositories" class="underline">GITHUB</a>
+              &nbsp;
+              <a href="https://gitee.com/organizations/rika-template/projects" class="underline">GITEE</a>
+            </span>
+
+
+          </div>
+          <div class="mt-4" v-motion-fade :delay="900" :duration="1000">
             <span>{{ $t('index.life') }}</span>
           </div>
         </div>

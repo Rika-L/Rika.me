@@ -19,6 +19,8 @@ const en = {
     myProject: 'is a personal utility function library based on TypeScript.',
     frontend: 'Front-end development, to me, is more of a hobby than just a tool for making a living. It allows me to bring many of my ideas to life, and the \'what you see is what you get\' nature of front-end development truly resonates with me.',
     life: 'In life, I enjoy savoring music and coffee. Eason Chan and a cup of iced coffee are the perfect match after coding.',
+    cli:'I developed a command-line interface tool to efficiently generate predefined project templates.',
+    temp:"All project templates are available at "
   },
 }
 export default en
