@@ -11,9 +11,11 @@
     "lint:fix": "eslint . --fix"
   },
   "dependencies": {
+    "@types/nprogress": "^0.2.3",
     "@vueuse/core": "^10.11.0",
     "@vueuse/motion": "^2.2.3",
     "element-plus": "^2.7.8",
+    "nprogress": "^0.2.0",
     "vue": "^3.4.31",
     "vue-i18n": "^9.13.1",
     "vue-router": "^4.4.2"

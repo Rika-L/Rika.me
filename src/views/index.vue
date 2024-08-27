@@ -58,7 +58,3 @@ import LogoCard from '@/components/LogoCard.vue'
     </ElRow>
   </div>
 </template>
-
-<style scoped>
-
-</style>

@@ -1,4 +1,5 @@
 @import "dark.css";
+@import "nprogress.css";
 
 @tailwind base;
 @tailwind components;
