@@ -26,6 +26,7 @@
     "@iconify/tailwind": "^1.1.2",
     "@types/node": "^22.1.0",
     "@vitejs/plugin-vue": "^5.0.5",
+    "@vue-macros/reactivity-transform": "^1.0.3",
     "autoprefixer": "^10.4.20",
     "eslint": "^9.9.0",
     "postcss": "^8.4.41",

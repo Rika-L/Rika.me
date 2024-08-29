@@ -9,7 +9,7 @@
     "useDefineForClassFields": true,
     "baseUrl": "./",
     "module": "ESNext",
-
+    "types": ["@vue-macros/reactivity-transform/macros-global"],
     /* Bundler mode */
     "moduleResolution": "bundler", // 解析非相对模块的基地址，默认是当前目录
     "paths": {

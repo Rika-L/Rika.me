@@ -2,7 +2,7 @@ import path from 'node:path'
 import process from 'node:process'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-
+import ReactivityTransform from '@vue-macros/reactivity-transform/vite'
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 import ElementPlus from 'unplugin-element-plus/vite'
 
@@ -17,6 +17,7 @@ export default defineConfig({
       // Specify symbolId format
       symbolId: 'icon-[dir]-[name]',
     }),
+    ReactivityTransform()
   ],
   resolve: {
     alias: {
