@@ -17,7 +17,7 @@ export default defineConfig({
       // Specify symbolId format
       symbolId: 'icon-[dir]-[name]',
     }),
-    ReactivityTransform()
+    ReactivityTransform(),
   ],
   resolve: {
     alias: {

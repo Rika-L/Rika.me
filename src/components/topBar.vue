@@ -102,7 +102,7 @@ export default {
             class="iconify text-xl" :class="isDark ? ' mdi--white-balance-sunny' : 'mdi--moon-and-stars'"
             @click="toggleDark"
           />
-          <a class="iconify mdi--github text-xl" href="https://github.com/Rika-L" target="_blank"/>
+          <a class="iconify mdi--github text-xl" href="https://github.com/Rika-L" target="_blank" />
         </div>
       </ElCol>
     </ElRow>

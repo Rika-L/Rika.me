@@ -1,6 +1,6 @@
-import {createApp} from 'vue'
+import { createApp } from 'vue'
 import './style/style.css'
-import {MotionPlugin} from '@vueuse/motion'
+import { MotionPlugin } from '@vueuse/motion'
 import App from './App.vue'
 import router from '@/router'
 import i18n from '@/language'

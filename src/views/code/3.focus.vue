@@ -8,7 +8,7 @@
 
 <template>
   <div class="flex justify-center mt-72">
-    <div class="focus"></div>
+    <div class="focus" />
   </div>
 </template>
 
@@ -44,7 +44,6 @@
 .dark .focus::before {
   background-image: radial-gradient(circle closest-side, #374151FF 94%, #fff);
 }
-
 
 @keyframes focusing {
   100% {

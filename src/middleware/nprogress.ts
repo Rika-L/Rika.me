@@ -1,11 +1,11 @@
-import router from "@/router";
-// @ts-ignore
 import NProgress from 'nprogress'
-NProgress.configure({ showSpinner: false });
+import router from '@/router'
+
+NProgress.configure({ showSpinner: false })
 
 router.beforeEach(() => {
-    NProgress.start()
+  NProgress.start()
 })
 router.afterEach(() => {
-    NProgress.done()
+  NProgress.done()
 })

@@ -8,4 +8,3 @@ import TopBar from '@/components/topBar.vue'
     <RouterView />
   </div>
 </template>
-

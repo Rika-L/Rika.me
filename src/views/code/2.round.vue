@@ -9,17 +9,18 @@
 <template>
   <div class=" fixed -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
     <div class="shell">
-      <span class="blob"></span>
-      <span class="blob"></span>
-      <span class="blob"></span>
-      <span class="blob"></span>
+      <span class="blob" />
+      <span class="blob" />
+      <span class="blob" />
+      <span class="blob" />
     </div>
   </div>
-  <div class="text-center font-thin text-xl">Try using Dark mode for best viewing</div>
+  <div class="text-center font-thin text-xl">
+    Try using Dark mode for best viewing
+  </div>
 </template>
 
 <style scoped>
-
 .shell {
   display: grid;
   position: relative;
