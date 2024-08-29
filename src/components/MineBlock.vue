@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type {BlockState} from "@/views/code/demo/type.ts";
+import {isDev} from "@/composables";
 
 defineProps<{block:BlockState}>()
 const numberColors = [
@@ -32,7 +33,7 @@ function getBlockClass(block: BlockState) {
     <template v-if="block.flagged">
       <div class="iconify mdi--flag text-red-400" />
     </template>
-    <template v-if="block.revealed ">
+    <template v-if="block.revealed || isDev">
       <div v-if="block.mine" class="iconify mdi--mine" />
       <div v-else>
         {{ block.adjacentMines }}
