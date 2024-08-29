@@ -104,10 +104,23 @@ export class GamePlay {
         this.expendZero(block)
     }
 
+    onDblClick(block:BlockState){
+        if (this.state.value.gameState !== 'play') return
+        if (!block.revealed) return
+        this.getSiblings(block).forEach((b)=>{
+            if (b.flagged) return
+            this.onClick(b)
+        })
+    }
+
     onRightClick(block: BlockState) {
         if (block.revealed)
             return
-        block.flagged = true
+        if (block.flagged){
+            block.flagged = false
+        }else{
+            block.flagged = true
+        }
     }
 
 

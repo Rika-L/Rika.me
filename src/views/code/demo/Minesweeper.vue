@@ -2,7 +2,7 @@
 import MineBlock from "@/components/MineBlock.vue";
 import {GamePlay} from "@/composables/logic.ts";
 import {computed, watchEffect} from "vue";
-import {isDev, toggleDev} from "../../../composables";
+import {isDev, toggleDev} from "@/composables";
 
 const play = new GamePlay(10, 10, 10)
 
@@ -24,6 +24,7 @@ watchEffect(() => {
             :key="x"
             :block="block"
             @click="play.onClick(block)"
+            @dblclick="play.onDblClick(block)"
             @contextmenu.prevent="play.onRightClick(block)"
         />
       </div>
