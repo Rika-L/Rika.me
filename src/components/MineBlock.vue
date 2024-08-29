@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type {BlockState} from "@/views/code/demo/type.ts";
+import type {BlockState} from "@/views/code/4.minesweeper/type.ts";
 import {isDev} from "@/composables";
 
 defineProps<{ block: BlockState }>()
