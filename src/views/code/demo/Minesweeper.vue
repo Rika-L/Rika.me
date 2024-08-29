@@ -1,12 +1,15 @@
 <script setup lang="ts">
 import MineBlock from "@/components/MineBlock.vue";
-import {isDev, toggleDev} from "@/composables";
 import {GamePlay} from "@/composables/logic.ts";
-import {computed} from "vue";
+import {computed, watchEffect} from "vue";
 
-const play = new GamePlay(12, 12)
+const play = new GamePlay(5, 5)
 
 const state = computed(() => play.board)
+
+watchEffect(() => {
+  play.checkGameState()
+})
 </script>
 
 <template>
