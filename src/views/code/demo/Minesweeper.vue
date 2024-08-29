@@ -2,10 +2,13 @@
 import MineBlock from "@/components/MineBlock.vue";
 import {GamePlay} from "@/composables/logic.ts";
 import {computed, watchEffect} from "vue";
+import {isDev, toggleDev} from "../../../composables";
 
-const play = new GamePlay(5, 5)
+const play = new GamePlay(10, 10, 10)
 
-const state = computed(() => play.board)
+const state = computed(() => play.block)
+
+const mineCount = computed(() => play.blocks.reduce((a, b) => a + (b.mine ? 1 : 0), 0))
 
 watchEffect(() => {
   play.checkGameState()
@@ -25,5 +28,10 @@ watchEffect(() => {
         />
       </div>
     </div>
+  </div>
+  <div class="flex justify-center gap-5">
+    {{ mineCount }}
+    <button @click="toggleDev()">{{ isDev }}</button>
+    <button @click="play.reset">reset</button>
   </div>
 </template>
