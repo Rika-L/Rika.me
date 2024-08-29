@@ -2,7 +2,7 @@
 import type {BlockState} from "@/views/code/demo/type.ts";
 import {isDev} from "@/composables";
 
-defineProps<{block:BlockState}>()
+defineProps<{ block: BlockState }>()
 const numberColors = [
   'text-transparent',
   'text-blue-400',
@@ -31,10 +31,10 @@ function getBlockClass(block: BlockState) {
       class="m-0.5 w-10 h-10 border border-solid border-gray-400/50 flex justify-center items-center"
   >
     <template v-if="block.flagged">
-      <div class="iconify mdi--flag text-red-400" />
+      <div class="iconify mdi--flag text-red-400"/>
     </template>
-    <template v-if="block.revealed || isDev">
-      <div v-if="block.mine" class="iconify mdi--mine" />
+    <template v-else-if="block.revealed || isDev">
+      <div v-if="block.mine" class="iconify mdi--mine"/>
       <div v-else>
         {{ block.adjacentMines }}
       </div>
