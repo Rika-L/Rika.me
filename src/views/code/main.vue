@@ -16,6 +16,7 @@
         <a href="/#/code/1">1. patternedGlass</a>
         <a href="/#/code/2">2. round</a>
         <a href="/#/code/3">3. focus</a>
+        <a href="/#/code/4">4. minesweeper (is Working)</a>
       </div>
     </div>
   </div>

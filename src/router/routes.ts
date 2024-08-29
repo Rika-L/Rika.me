@@ -28,7 +28,7 @@ export const constantRoute: RouteRecordRaw[] = [
         component:() => import('@/views/code/3.focus.vue'),
       },
       {
-        path:'/code/demo',
+        path:'/code/4',
         component:() => import('@/views/code/demo/Minesweeper.vue'),
       }
     ]

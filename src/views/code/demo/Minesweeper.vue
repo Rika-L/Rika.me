@@ -1,15 +1,10 @@
 <script setup lang="ts">
-interface BlockState {
-  x: number
-  y: number
-  revealed: boolean
-  mine?: boolean
-  flagged?: boolean
-  adjacentMines: number
-}
+import {watchEffect} from "vue";
+import {BlockState} from "@/views/code/demo/type.ts";
 
-const WIDTH = 10
-const HEIGHT = 10
+
+const WIDTH = 5
+const HEIGHT = 5
 let state = $ref(
     Array.from({length: HEIGHT}, (_, y) =>
         Array.from({length: WIDTH}, (_, x) => <BlockState>{x, y, adjacentMines: 0, revealed: false})))
@@ -24,7 +19,7 @@ function generateMines(initial: BlockState) {
 }
 
 let mineGenerated = false
-let dev = true
+let dev = false
 
 function onClick(block: BlockState) {
   if (!mineGenerated) {
@@ -35,8 +30,14 @@ function onClick(block: BlockState) {
   block.revealed = true
   if (block.mine) alert('BOOM!')
   expendZero(block)
+  checkGameState()
 }
 
+function onRightClick(block: BlockState) {
+  if (block.revealed) return
+  block.flagged = true
+  checkGameState()
+}
 
 const directions = [
   [1, 1],
@@ -84,7 +85,8 @@ function updateNumbers() {
 
 
 function getBlockClass(block: BlockState) {
-  if (!block.revealed) return 'bg-gray-400/10'
+  if (block.flagged) return 'bg-gray-400/10'
+  if (!block.revealed) return 'bg-gray-400/10 hover:bg-gray-200/10 '
   return block.mine ? 'bg-red-400/50 text-white' : numberColors[block.adjacentMines]
 }
 
@@ -97,6 +99,19 @@ function expendZero(block: BlockState) {
     }
   })
 }
+
+function checkGameState() {
+  console.log(1);
+  if (!mineGenerated) return
+  const blocks = state.flat()
+
+  if (blocks.every((block) => block.revealed || block.flagged)) {
+    if (blocks.some(block => block.flagged && !block.mine))
+      alert('cheat')
+    else
+      alert('win')
+  }
+}
 </script>
 
 <template>
@@ -105,10 +120,14 @@ function expendZero(block: BlockState) {
       <div v-for="(row, y) in state" :key="y" class="flex justify-center items-center">
         <button
             :class="getBlockClass(block)"
-            class="m-0.5 w-10 h-10 border border-solid border-gray-400/50 hover:bg-gray-200/10 flex justify-center items-center"
+            class="m-0.5 w-10 h-10 border border-solid border-gray-400/50 flex justify-center items-center"
             @click="onClick(block)"
+            @contextmenu.prevent="onRightClick(block)"
             v-for="(block,x) in row"
             :key="x">
+          <template v-if="block.flagged">
+            <div class="iconify mdi--flag text-red-400"/>
+          </template>
           <template v-if="block.revealed||dev">
             <div v-if="block.mine" class="iconify mdi--mine"/>
             <div v-else>
