@@ -1,4 +1,4 @@
-import type {BlockState} from "@/views/code/demo/type.ts";
+import type {BlockState} from "@/views/code/4.minesweeper/type.ts";
 import {Ref, ref} from "vue";
 
 const directions = [
@@ -38,7 +38,14 @@ export class GamePlay {
         this.reset()
     }
 
-    reset() {
+    reset(
+        width = this.width,
+        height = this.width,
+        mines = this.mines
+    ) {
+        this.width = width
+        this.height = height
+        this.mines = mines
         this.state.value = {
             mineGenerated: false,
             gameState: 'play',
@@ -61,9 +68,7 @@ export class GamePlay {
             const x = this.randomInt(0, this.width - 1)
             const y = this.randomInt(0, this.height - 1)
             const block = state[y][x]
-            if (Math.abs(initial.x - block.x) <= 1)
-                return false
-            if (Math.abs(initial.y - block.y) <= 1)
+            if (Math.abs(initial.x - block.x) <= 1 && Math.abs(initial.y - block.y) <= 1)
                 return false
             if (block.mine === true)
                 return false
@@ -104,10 +109,10 @@ export class GamePlay {
         this.expendZero(block)
     }
 
-    onDblClick(block:BlockState){
+    onDblClick(block: BlockState) {
         if (this.state.value.gameState !== 'play') return
         if (!block.revealed) return
-        this.getSiblings(block).forEach((b)=>{
+        this.getSiblings(block).forEach((b) => {
             if (b.flagged) return
             this.onClick(b)
         })
@@ -116,9 +121,9 @@ export class GamePlay {
     onRightClick(block: BlockState) {
         if (block.revealed)
             return
-        if (block.flagged){
+        if (block.flagged) {
             block.flagged = false
-        }else{
+        } else {
             block.flagged = true
         }
     }
@@ -176,10 +181,8 @@ export class GamePlay {
             if (blocks.some(block => block.flagged && !block.mine)) {
                 this.state.value.gameState = 'lost'
                 this.showAllMines()
-                alert('lost')
             } else {
                 this.state.value.gameState = 'won'
-                alert('won')
             }
         }
     }
