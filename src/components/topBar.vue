@@ -94,10 +94,12 @@ export default {
       <ElCol :xs="0" :sm="0" :md="12" :lg="12" :xl="12">
         <div class="flex justify-start items-center gap-20 h-full">
           <div
-              v-show="$route.path !== '/'"
-              @click="$router.go(-1)"
-              class="cursor-pointer ml-20 text-[#0004] dark:text-[#fff4] hover:text-[#0009] dark:hover:text-[#fff9]">
-            cd ../
+              @click="$router.push('/')"
+              class="flex justify-center items-center cursor-pointer ml-20 text-[#0004] dark:text-[#fff4] hover:text-[#0009] dark:hover:text-[#fff9]">
+            <svg width="16" height="16">
+              <use xlink:href="#icon-icon"></use>
+            </svg>
+            <span class="ml-2">Rika.me</span>
           </div>
         </div>
       </ElCol>
