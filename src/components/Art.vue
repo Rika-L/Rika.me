@@ -5,15 +5,16 @@
  * @CreateData 2024/08/20
  */
 import {computed, defineAsyncComponent} from 'vue'
+import random from "@/utils/random.ts";
 
-function getArt(): string {
-  if (Math.random() < 0.3) return 'ball'
-  if (Math.random() < 0.5) return 'plum'
-  return 'star'
+const artArr = ['plum', 'ball', 'star']
+
+function getArt(arr: string[]): string {
+  return arr[random(0, arr.length)]
 }
 
 const ArtComponent = computed(() => {
-  const art = getArt()
+  const art = getArt(artArr)
   if (typeof window !== 'undefined') {
     if (art === 'plum')
       return defineAsyncComponent(() => import('./ArtPlum.vue'))
