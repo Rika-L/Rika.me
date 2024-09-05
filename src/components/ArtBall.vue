@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { onMounted, reactive, ref } from 'vue'
 import { useDark, useWindowSize } from '@vueuse/core'
+import random from "@/utils/random.ts";
 
 const el = ref<HTMLCanvasElement | null>(null)
 const size = reactive(useWindowSize())
@@ -37,14 +38,6 @@ interface BallProps {
   size: number
   color: string
   lineColor: string
-}
-
-// 随机数生成函数
-function random(min: number, max: number): number {
-  let num = Math.floor(Math.random() * (max - min) + min)
-  if (num === 0)
-    num = 1
-  return num
 }
 
 // 小球的工厂函数

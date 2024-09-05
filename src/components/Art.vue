@@ -7,12 +7,14 @@
 import { computed, defineAsyncComponent } from 'vue'
 
 const ArtComponent = computed(() => {
-  const art = Math.random() > 0.5 ? 'plum' : 'ball'
+  const art = Math.random() > 0.3 ? Math.random() > 0.5?"star":"plum" : 'ball'
   if (typeof window !== 'undefined') {
     if (art === 'plum')
-      return defineAsyncComponent(() => import('./ArtPlum.vue'))
+      return defineAsyncComponent(() => import('./ArtStar.vue'))
     else if (art === 'ball')
-      return defineAsyncComponent(() => import('./ArtBall.vue'))
+      return defineAsyncComponent(() => import('./ArtStar.vue'))
+    else if (art === 'star')
+      return defineAsyncComponent(() => import('./ArtStar.vue'))
   }
   return undefined
 })
