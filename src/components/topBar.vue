@@ -89,9 +89,7 @@ onMounted(() => {
           <div
               @click="$router.push('/')"
               class="flex justify-center items-center cursor-pointer ml-20 text-[#0004] dark:text-[#fff4] hover:text-[#0009] dark:hover:text-[#fff9]">
-            <svg width="16" height="16">
-              <use xlink:href="#icon-icon"></use>
-            </svg>
+            <img src="@/assets/svg/icon.svg" class="w-[16px] h-[16px]" alt="">
             <span class="ml-2">Rika.me</span>
           </div>
         </div>

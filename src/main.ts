@@ -4,9 +4,7 @@ import { MotionPlugin } from '@vueuse/motion'
 import App from './App.vue'
 import router from '@/router'
 import i18n from '@/language'
-import 'virtual:svg-icons-register'
 import '@/middleware/nprogress.ts'
-// 自定义一个代码高亮指令
 
 const app = createApp(App)
 
