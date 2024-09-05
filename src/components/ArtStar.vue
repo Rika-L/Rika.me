@@ -7,7 +7,7 @@ import random from "@/utils/random.ts";
 let pX = $ref<null | number>(null)
 let pY = $ref<null | number>(null)
 
-const positions = Array.from({length: 100}, () => [random(0,100), random(0,100)]);
+const positions = Array.from({length: 50}, () => [random(0,100), random(0,100)]);
 
 function handleMove({pageX, pageY}: { pageX: number, pageY: number }) {
   pX = pageX

@@ -38,11 +38,11 @@ watchEffect(() => {
 <template>
   <div
     ref="ref"
-    class="backgroundStarContainer"
+    class="absolute top-0 left-0 -z-[1] pointer-events-none select-none"
     :style="`top: ${top};left: ${left}`"
   >
     <svg
-      class="backgroundStar"
+      class="pointer-events-none select-none blur-[2px] transition-all duration-200"
       xmlns="http://www.w3.org/2000/svg"
       width="8"
       height="9"
@@ -63,24 +63,13 @@ watchEffect(() => {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(4 4.49998) scale(3.77871 4.29149)"
         >
-          <stop offset="0%" stop-color="#4FC08D"/>
-          <stop offset="30%" stop-color="#7ED5A6"/>
-          <stop offset="50%" stop-color="#A9DFBF"/>
-          <stop offset="70%" stop-color="#7ED5A6"/>
-          <stop offset="100%" stop-color="#4FC08D"/>
+          <stop offset="0%" stop-color="rgb(136, 136, 136)"/>
+          <stop offset="30%" stop-color="rgb(136, 136, 136)"/>
+          <stop offset="50%" stop-color="rgb(136, 136, 136)"/>
+          <stop offset="70%" stop-color="rgb(136, 136, 136)"/>
+          <stop offset="100%" stop-color="rgb(136, 136, 136)"/>
         </radialGradient>
       </defs>
     </svg>
   </div>
 </template>
-
-<style scoped>
-.backgroundStarContainer {
-  @apply absolute top-0 left-0 -z-[1] pointer-events-none select-none
-}
-
-.backgroundStar {
-  @apply pointer-events-none select-none blur-[2px] transition-all duration-200;
-}
-
-</style>

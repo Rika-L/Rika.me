@@ -4,15 +4,21 @@
  * @Description
  * @CreateData 2024/08/20
  */
-import { computed, defineAsyncComponent } from 'vue'
+import {computed, defineAsyncComponent} from 'vue'
+
+function getArt(): string {
+  if (Math.random() < 0.3) return 'ball'
+  if (Math.random() < 0.5) return 'plum'
+  return 'star'
+}
 
 const ArtComponent = computed(() => {
-  const art = Math.random() > 0.3 ? Math.random() > 0.5?"star":"plum" : 'ball'
+  const art = getArt()
   if (typeof window !== 'undefined') {
     if (art === 'plum')
-      return defineAsyncComponent(() => import('./ArtStar.vue'))
+      return defineAsyncComponent(() => import('./ArtPlum.vue'))
     else if (art === 'ball')
-      return defineAsyncComponent(() => import('./ArtStar.vue'))
+      return defineAsyncComponent(() => import('./ArtBall.vue'))
     else if (art === 'star')
       return defineAsyncComponent(() => import('./ArtStar.vue'))
   }
@@ -21,9 +27,6 @@ const ArtComponent = computed(() => {
 </script>
 
 <template>
-  <component :is="ArtComponent" />
+  <component :is="ArtComponent"/>
 </template>
 
-<style scoped>
-
-</style>
