@@ -13,10 +13,10 @@
         Just Some Code Snippet
       </div>
       <div class="grid-cols-3 grid grid-flow-row gap-5 mt-16 code-gird">
-        <a href="/#/code/1">1. patternedGlass</a>
-        <a href="/#/code/2">2. round</a>
-        <a href="/#/code/3">3. focus</a>
-        <a href="/#/code/4">4. minesweeper (is Working)</a>
+        <a href="/code/1">1. patternedGlass</a>
+        <a href="/code/2">2. round</a>
+        <a href="/code/3">3. focus</a>
+        <a href="/code/4">4. minesweeper</a>
       </div>
     </div>
   </div>

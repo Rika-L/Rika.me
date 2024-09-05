@@ -33,4 +33,9 @@ export const constantRoute: RouteRecordRaw[] = [
       },
     ],
   },
+  {
+    path: '/about',
+    component: () => import('@/views/about.vue'),
+    name: 'about',
+  },
 ]

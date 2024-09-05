@@ -2,11 +2,10 @@
 import {useI18n} from 'vue-i18n'
 import {useDark} from '@vueuse/core'
 import {nextTick, onMounted, ref} from 'vue'
-import {useRoute, useRouter} from 'vue-router'
+import {useRouter} from 'vue-router'
 import {ElCol, ElRow} from 'element-plus'
 
 const $router = useRouter()
-const $route = useRoute()
 const isDark = useDark({
   selector: 'html',
   valueDark: 'dark',
@@ -82,12 +81,6 @@ onMounted(() => {
 
 </script>
 
-<script lang="ts">
-export default {
-  name: 'Bar',
-}
-</script>
-
 <template>
   <div ref="TopBarRef" class="fixed top-0 w-full h-16 z-10">
     <ElRow class="leading-loose mt-18 w-full h-full">
@@ -107,7 +100,7 @@ export default {
         <div class="flex justify-center items-center gap-5 topBar h-full">
           <a class="cursor-pointer" @click="$router.push('/')">{{ $t('bar.home') }}</a>
           <a class="cursor-pointer" @click="$router.push('/code')">{{ $t('bar.code') }}</a>
-          <a class="cursor-pointer">{{ $t('bar.about') }}</a>
+          <a class="cursor-pointer" @click="$router.push('/about')">{{ $t('bar.about') }}</a>
           <a class="iconify mdi--language text-xl" @click="changeLang"/>
           <a
               class="iconify text-xl" :class="isDark ? ' mdi--white-balance-sunny' : 'mdi--moon-and-stars'"

@@ -40,7 +40,7 @@ export class GamePlay {
 
     reset(
         width = this.width,
-        height = this.width,
+        height = this.height,
         mines = this.mines
     ) {
         this.width = width
