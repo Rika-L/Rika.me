@@ -13,30 +13,30 @@
   "dependencies": {
     "@types/canvas-confetti": "^1.6.4",
     "@types/nprogress": "^0.2.3",
-    "@vueuse/core": "^10.11.0",
-    "@vueuse/motion": "^2.2.3",
+    "@vueuse/core": "^10.11.1",
+    "@vueuse/motion": "^2.2.5",
     "canvas-confetti": "^1.9.3",
-    "element-plus": "^2.7.8",
+    "element-plus": "^2.8.3",
     "nprogress": "^0.2.0",
-    "vue": "^3.5.1",
-    "vue-i18n": "^9.13.1",
-    "vue-router": "^4.4.2"
+    "vue": "^3.5.5",
+    "vue-i18n": "^9.14.0",
+    "vue-router": "^4.4.5"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^2.26.0",
-    "@iconify/json": "^2.2.234",
-    "@iconify/tailwind": "^1.1.2",
-    "@types/node": "^22.1.0",
-    "@vitejs/plugin-vue": "^5.0.5",
-    "@vue-macros/reactivity-transform": "^1.0.3",
+    "@antfu/eslint-config": "^2.27.3",
+    "@iconify/json": "^2.2.249",
+    "@iconify/tailwind": "^1.1.3",
+    "@types/node": "^22.5.5",
+    "@vitejs/plugin-vue": "^5.1.3",
+    "@vue-macros/reactivity-transform": "^1.1.1",
     "autoprefixer": "^10.4.20",
-    "eslint": "^9.9.0",
-    "postcss": "^8.4.41",
-    "tailwindcss": "^3.4.7",
-    "typescript": "^5.2.2",
+    "eslint": "^9.10.0",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.11",
+    "typescript": "^5.6.2",
     "unplugin-element-plus": "^0.8.0",
-    "vite": "^5.3.4",
+    "vite": "^5.4.5",
     "vite-plugin-svg-icons": "^2.0.1",
-    "vue-tsc": "^2.0.24"
+    "vue-tsc": "^2.1.6"
   }
 }
