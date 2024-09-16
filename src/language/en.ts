@@ -10,6 +10,7 @@ const en = {
     about: 'About',
     code: 'Code',
     home: 'Home',
+    collection: 'Collection',
   },
   index: {
     Subheading: 'A front-end developer',

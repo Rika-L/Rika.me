@@ -7,6 +7,11 @@ export const constantRoute: RouteRecordRaw[] = [
     name: 'index',
   },
   {
+    path: '/collections',
+    component: () => import('@/views/collection.vue'),
+    name: 'collections',
+  },
+  {
     path: '/code',
     name: 'code',
     children: [

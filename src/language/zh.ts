@@ -10,6 +10,7 @@ const zh = {
     about: '关于',
     code: '代码',
     home: '首页',
+    collection: '收集',
   },
   index: {
     Subheading: '一位前端开发者',
