@@ -1,4 +1,5 @@
 [
   { "name": "Vue官方文档", "url": "https://cn.vuejs.org/" },
-  { "name": "JavaScript风格指南", "url": "https://lin-123.github.io/javascript/" }
+  { "name": "JavaScript风格指南", "url": "https://lin-123.github.io/javascript/" },
+  { "name": "Build Your Own React", "url": "https://pomb.us/build-your-own-react/" }
 ]

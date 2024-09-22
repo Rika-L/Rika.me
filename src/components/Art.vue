@@ -4,13 +4,14 @@
  * @Description
  * @CreateData 2024/08/20
  */
-import {computed, defineAsyncComponent} from 'vue'
-import random from "@/utils/random.ts";
+import { computed, defineAsyncComponent } from 'vue'
 
 const artArr = ['plum', 'ball', 'star']
 
 function getArt(arr: string[]): string {
-  return arr[random(0, arr.length)]
+  return Math.random() > 0.3
+    ? arr[0]
+    : Math.random() > 0.5 ? arr[1] : arr[2]
 }
 
 const ArtComponent = computed(() => {
@@ -28,6 +29,5 @@ const ArtComponent = computed(() => {
 </script>
 
 <template>
-  <component :is="ArtComponent"/>
+  <component :is="ArtComponent" />
 </template>
-
