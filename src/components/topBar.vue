@@ -107,6 +107,7 @@ onMounted(() => {
             @click="toggleDark"
           />
           <a class="iconify mdi--github text-xl" href="https://github.com/Rika-L" target="_blank" />
+          <a class="iconify simple-icons--juejin text-xl" href="https://juejin.cn/user/1660684788040836" target="_blank" />
         </div>
       </ElCol>
     </ElRow>
