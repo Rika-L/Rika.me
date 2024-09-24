@@ -39,7 +39,7 @@ import LogoCard from '@/components/LogoCard.vue'
           </div>
           <div v-motion-fade class="mt-4" :delay="800" :duration="1000">
             <span>{{ $t('index.cli') }}</span>
-            <LogoCard title="rika-cli" url="https://rika-utils.netlify.app/" />
+            <LogoCard title="rika-cli" url="https://www.npmjs.com/package/rika-cli" />
             <span>{{ $t('index.temp') }}</span>
             <span class="mx-2">
               <a href="https://github.com/orgs/rika-template/repositories" class="underline">GITHUB</a>
