@@ -1,6 +1,9 @@
 <script lang="ts" setup>
-import WebSiteCard from '@/components/WebSiteCard.vue'
-import WebSiteList from '@/collectionWebSite.json'
+import vueList from '@/collection/vue.json'
+import reactList from '@/collection/react.json'
+import javaScriptList from '@/collection/javaScript.json'
+import otherList from '@/collection/other.json'
+import WebSiteItem from '@/components/WebSiteItem.vue'
 /**
  * @Author Rika
  * @Description WebSite Collection Page
@@ -10,12 +13,13 @@ import WebSiteList from '@/collectionWebSite.json'
 <template>
   <div class="flex justify-center mt-[5vh]">
     <div>
-      <div class="text-5xl font-thin text-center">
+      <div class="text-5xl font-thin text-center mb-10">
         Some WebSite Collection
       </div>
-      <div class="grid grid-cols-3 gap-4 mt-4">
-        <WebSiteCard v-for="({ name, url }, i) in WebSiteList" :key="i" :name="name" :url="url" />
-      </div>
+      <WebSiteItem v-motion-fade :delay="160 * 1" :duration="1000" during name="VueJS" :list="vueList" />
+      <WebSiteItem v-motion-fade :delay="160 * 2" :duration="1000" during name="ReactJS" :list="reactList" />
+      <WebSiteItem v-motion-fade :delay="160 * 3" :duration="1000" during name="JavaScript" :list="javaScriptList" />
+      <WebSiteItem v-motion-fade :delay="160 * 4" :duration="1000" during name="Other" :list="otherList" />
     </div>
   </div>
 </template>

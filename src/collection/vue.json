@@ -1,0 +1,9 @@
+[
+  { "name": "Vue官方文档", "url": "https://cn.vuejs.org/" },
+  { "name": "vue-router", "url": "https://router.vuejs.org/zh/" },
+  { "name": "Pinia", "url": "https://pinia.vuejs.org/zh/" },
+  { "name": "vue-i18n", "url": "https://vue-i18n.intlify.dev/" },
+  { "name": "Nuxt.js", "url": "https://nuxt.com.cn/" },
+  { "name": "UniApp", "url": "https://uniapp.dcloud.net.cn/" },
+  { "name": "VueUse", "url": "https://vueuse.nodejs.cn/" }
+]

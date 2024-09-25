@@ -1,16 +1,15 @@
 <script setup lang="ts">
-
-import {useTemplateRef, watchEffect} from "vue";
+import { useTemplateRef, watchEffect } from 'vue'
 
 interface props {
-  top: number | string;
-  left: number | string;
-  pageX: number | null;
-  pageY: number | null;
-  size: number;
+  top: number | string
+  left: number | string
+  pageX: number | null
+  pageY: number | null
+  size: number
 }
 
-const {pageX, pageY, size} = defineProps<props>()
+const { pageX, pageY, size } = defineProps<props>()
 
 let transformX = $ref<number>(0)
 let transformY = $ref<number>(0)
@@ -19,16 +18,17 @@ const starRef = useTemplateRef<HTMLDivElement>('ref')
 
 watchEffect(() => {
   if (starRef.value) {
-    const {x, y} = starRef.value!.getBoundingClientRect();
+    const { x, y } = starRef.value!.getBoundingClientRect()
     if (pageX && pageY) {
-      const distanceX = pageX - x;
-      const distanceY = pageY - y;
+      const distanceX = pageX - x
+      const distanceY = pageY - y
       if (Math.abs(distanceX) < 100 && Math.abs(distanceY) < 100) {
-        transformX = distanceX;
-        transformY = distanceY;
-      } else {
-        transformX = 0;
-        transformY = 0;
+        transformX = distanceX
+        transformY = distanceY
+      }
+      else {
+        transformX = 0
+        transformY = 0
       }
     }
   }
@@ -52,8 +52,8 @@ watchEffect(() => {
       aria-label="star"
       :style="`width: ${size}; height: ${size}; transform: translate(${transformX}px, ${transformY}px)`"
     >
-      <title/>
-      <circle cx="4" cy="4.5" r="4" fill="url(#paint0_radial_2202_5618)"/>
+      <title />
+      <circle cx="4" cy="4.5" r="4" fill="url(#paint0_radial_2202_5618)" />
       <defs>
         <radialGradient
           id="paint0_radial_2202_5618"
@@ -63,11 +63,11 @@ watchEffect(() => {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(4 4.49998) scale(3.77871 4.29149)"
         >
-          <stop offset="0%" stop-color="rgb(136, 136, 136)"/>
-          <stop offset="30%" stop-color="rgb(136, 136, 136)"/>
-          <stop offset="50%" stop-color="rgb(136, 136, 136)"/>
-          <stop offset="70%" stop-color="rgb(136, 136, 136)"/>
-          <stop offset="100%" stop-color="rgb(136, 136, 136)"/>
+          <stop offset="0%" stop-color="rgb(136, 136, 136)" />
+          <stop offset="30%" stop-color="rgb(136, 136, 136)" />
+          <stop offset="50%" stop-color="rgb(136, 136, 136)" />
+          <stop offset="70%" stop-color="rgb(136, 136, 136)" />
+          <stop offset="100%" stop-color="rgb(136, 136, 136)" />
         </radialGradient>
       </defs>
     </svg>
