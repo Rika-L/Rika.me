@@ -36,6 +36,10 @@ export const constantRoute: RouteRecordRaw[] = [
         path: '/code/4',
         component: () => import('@/views/code/4.minesweeper/Minesweeper.vue'),
       },
+      {
+        path: '/code/5',
+        component: () => import('@/views/code/5.filter.vue'),
+      },
     ],
   },
   {

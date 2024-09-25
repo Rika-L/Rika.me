@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 import { useDark } from '@vueuse/core'
-import { nextTick, onMounted, ref } from 'vue'
+import { nextTick, onMounted, onUnmounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { ElCol, ElRow } from 'element-plus'
 
@@ -78,6 +78,10 @@ function handleScroll() {
 
 onMounted(() => {
   window.addEventListener('scroll', handleScroll)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', handleScroll)
 })
 </script>
 
