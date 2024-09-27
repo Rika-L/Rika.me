@@ -42,10 +42,6 @@
 <style scoped>
 .bg{
   background-size: 4px 4px;
-  background-image: radial-gradient(transparent 1px, white 1px);
-}
-
-.dark .bg{
-  background-image: radial-gradient(transparent 1px, black 1px);
+  background-image: radial-gradient(transparent 1px, var(--c-bg) 1px);
 }
 </style>
