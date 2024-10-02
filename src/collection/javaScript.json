@@ -1,5 +1,6 @@
 [
   { "name": "JavaScript风格指南", "url": "https://lin-123.github.io/javascript/" },
   { "name": "ES6入门教程", "url": "https://es6.ruanyifeng.com/" },
-  { "name": "Promise A+", "url": "https://promisesaplus.com/" }
+  { "name": "Promise A+", "url": "https://promisesaplus.com/" },
+  { "name": "npm", "url": "https://www.npmjs.com/" }
 ]

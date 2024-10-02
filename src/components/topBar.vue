@@ -94,7 +94,7 @@ onUnmounted(() => {
             class="flex justify-center items-center cursor-pointer ml-20 text-[#0004] dark:text-[#fff4] hover:text-[#0009] dark:hover:text-[#fff9]"
             @click="$router.push('/')"
           >
-            <img src="@/assets/svg/icon.svg" class="w-[16px] h-[16px]" alt="">
+            <img src="@/assets/svg/icon.svg" class="w-[24px] h-[24px]" alt="">
             <span class="ml-2">Rika.me</span>
           </div>
         </div>
