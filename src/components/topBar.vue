@@ -1,21 +1,11 @@
 <script setup lang="ts">
-import { useI18n } from 'vue-i18n'
 import { onMounted, onUnmounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
+import { useI18n } from 'vue-i18n'
+import MobileMenu from './MobileMenu.vue'
 import { isDark, toggleDark } from '@/composables'
 
 const $router = useRouter()
-
-const { locale } = useI18n()
-
-function changeLang() {
-  if (locale.value === 'en') {
-    locale.value = 'zh'
-  }
-  else {
-    locale.value = 'en'
-  }
-}
 
 const TopBarRef = ref<HTMLDivElement>()
 
@@ -24,7 +14,7 @@ const cls = ref('')
 function handleScroll() {
   if (window.scrollY !== 0) {
     if (!cls.value)
-      cls.value = 'bg-[#ffffff88] backdrop-blur-sm dark:bg-[#00000088]'
+      cls.value = 'bg-[#fff8] backdrop-blur-sm dark:bg-[#0008]'
   }
   else {
     if (cls.value)
@@ -39,6 +29,30 @@ onMounted(() => {
 onUnmounted(() => {
   window.removeEventListener('scroll', handleScroll)
 })
+
+const showMobileMenu = ref(false)
+
+function hdlMenuClick() {
+  showMobileMenu.value = true
+}
+
+const { locale } = useI18n()
+
+function toggleLang() {
+  if (locale.value === 'en') {
+    locale.value = 'zh'
+  }
+  else {
+    locale.value = 'en'
+  }
+}
+
+const menuList = [
+  { path: '/', name: 'bar.home' },
+  { path: '/collections', name: 'bar.collection' },
+  { path: '/code', name: 'bar.code' },
+  { path: '/about', name: 'bar.about' },
+]
 </script>
 
 <template>
@@ -58,11 +72,15 @@ onUnmounted(() => {
       </div>
     </div>
     <div class="hidden md:flex justify-center items-center gap-5 topBar h-full mr-10">
-      <a class="cursor-pointer" @click="$router.push('/')">{{ $t('bar.home') }}</a>
-      <a class="cursor-pointer" @click="$router.push('/collections')">{{ $t('bar.collection') }}</a>
-      <a class="cursor-pointer" @click="$router.push('/code')">{{ $t('bar.code') }}</a>
-      <a class="cursor-pointer" @click="$router.push('/about')">{{ $t('bar.about') }}</a>
-      <a class="iconify mdi--language text-xl" @click="changeLang" />
+      <RouterLink
+        v-for="item in menuList"
+        :key="item.path"
+        class="cursor-pointer"
+        :to="item.path"
+      >
+        {{ $t(item.name) }}
+      </RouterLink>
+      <a class="iconify mdi--language text-xl" @click="toggleLang" />
       <a
         class="iconify text-xl" :class="isDark ? ' mdi--white-balance-sunny' : 'mdi--moon-and-stars'"
         @click="toggleDark"
@@ -71,25 +89,11 @@ onUnmounted(() => {
       <a class="iconify simple-icons--juejin text-xl" href="https://juejin.cn/user/1660684788040836" target="_blank" />
     </div>
     <div class="flex justify-center items-center h-full mr-10 md:hidden topBar">
-      <div class="iconify mdi--menu text-xl cursor-pointer text-[#0004] dark:text-[#fff4] hover:text-[#0009] dark:hover:text-[#fff9]" />
+      <div
+        class="iconify mdi--menu text-xl cursor-pointer text-[#0004] dark:text-[#fff4] hover:text-[#0009] dark:hover:text-[#fff9]"
+        @click="hdlMenuClick"
+      />
+      <MobileMenu v-model="showMobileMenu" :menu-list="menuList" :toggle-lang="toggleLang"/>
     </div>
   </div>
 </template>
-
-<style scoped>
-.topBar > a {
-  color: #0004;
-}
-
-.dark .topBar > a {
-  color: #fff4;
-}
-
-.topBar > a:hover {
-  color: #0009;
-}
-
-.dark .topBar > a:hover {
-  color: #fff9;
-}
-</style>

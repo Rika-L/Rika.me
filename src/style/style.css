@@ -67,3 +67,20 @@ html {
 .dark::view-transition-new(root) {
     z-index: 1;
 }
+
+
+.topBar a {
+    color: #0004;
+  }
+  
+  .dark .topBar a {
+    color: #fff4;
+  }
+  
+  .topBar a:hover {
+    color: #0009;
+  }
+  
+  .dark .topBar a:hover {
+    color: #fff9;
+  }
