@@ -3,6 +3,7 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import ReactivityTransform from '@vue-macros/reactivity-transform/vite'
 import ElementPlus from 'unplugin-element-plus/vite'
+import vueDevTools from 'vite-plugin-vue-devtools'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -10,6 +11,7 @@ export default defineConfig({
     vue(),
     ElementPlus({}),
     ReactivityTransform(),
+    vueDevTools({ launchEditor: 'code' }),
   ],
   resolve: {
     alias: {
