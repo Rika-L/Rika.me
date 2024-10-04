@@ -12,7 +12,7 @@
       <div class="text-4xl font-thin text-center">
         Just Some Code Snippet
       </div>
-      <div class="grid-cols-3 grid grid-flow-row gap-5 mt-16 code-gird">
+      <div class="md:grid-cols-3 sm:grid-cols-2 grid-cols-1 grid grid-flow-row gap-5 mt-16 code-gird">
         <RouterLink to="/code/1">
           1. patternedGlass
         </RouterLink>

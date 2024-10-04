@@ -9,12 +9,12 @@ import { art, artArr, changeArt, isKeep } from '@/composables'
 
 <template>
   <div class="flex justify-center">
-    <div class="w-[1280px]">
+    <div class="md:w-[1280px] w-full p-2 md:p-0">
       <div class="my-16">
-        <div class="font-thin flex items-end text-6xl">
+        <div class="font-thin flex items-end text-4xl">
           <span class="">Theme&nbsp;</span>
         </div>
-        <div class="text-5xl flex gap-10 mt-5 ml-10 font-thin select-none">
+        <div class="text-3xl flex gap-5 mt-3 ml-10 font-thin select-none md:flex-row flex-col">
           <span
             v-for="i in artArr" :key="i"
             class="text-gray-500 hover:text-gray-900 dark:hover:text-gray-100 cursor-pointer"
@@ -29,7 +29,7 @@ import { art, artArr, changeArt, isKeep } from '@/composables'
           >save</span>
         </div>
       </div>
-      <div class="font-thin text-6xl">
+      <div class="font-thin text-4xl">
         About
       </div>
     </div>
