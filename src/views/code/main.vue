@@ -28,6 +28,9 @@
         <RouterLink to="/code/5">
           5. filter
         </RouterLink>
+        <RouterLink to="/code/6">
+          6. audio
+        </RouterLink>
       </div>
     </div>
   </div>

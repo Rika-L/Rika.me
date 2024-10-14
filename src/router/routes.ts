@@ -40,6 +40,10 @@ export const constantRoute: RouteRecordRaw[] = [
         path: '/code/5',
         component: () => import('@/views/code/5.filter.vue'),
       },
+      {
+        path: '/code/6',
+        component: () => import('@/views/code/6.audio.vue'),
+      },
     ],
   },
   {
