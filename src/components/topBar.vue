@@ -93,7 +93,7 @@ const menuList = [
         class="iconify mdi--menu text-xl cursor-pointer text-[#0004] dark:text-[#fff4] hover:text-[#0009] dark:hover:text-[#fff9]"
         @click="hdlMenuClick"
       />
-      <MobileMenu v-model="showMobileMenu" :menu-list="menuList" :toggle-lang="toggleLang"/>
+      <MobileMenu v-model="showMobileMenu" :menu-list="menuList" :toggle-lang="toggleLang" />
     </div>
   </div>
 </template>

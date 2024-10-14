@@ -9,7 +9,7 @@ export default defineConfig({
   plugins: [
     vue(),
     ReactivityTransform(),
-    vueDevTools({ launchEditor: 'code' }),
+    vueDevTools(),
   ],
   resolve: {
     alias: {

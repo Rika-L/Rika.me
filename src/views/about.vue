@@ -29,8 +29,11 @@ import { art, artArr, changeArt, isKeep } from '@/composables'
           >save</span>
         </div>
       </div>
+      <div class="">
       <div class="font-thin text-4xl">
         About
+      </div>
+        
       </div>
     </div>
   </div>
